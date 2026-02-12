@@ -1,0 +1,54 @@
+/* Container for the fallback text */
+.fallback-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Fallback text styles */
+.fallback-text {
+  position: relative;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary-color);
+  padding: 1.5rem 2.5rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 220, 230, 0.15);
+  border: 2px solid rgba(255, 51, 102, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(255, 51, 102, 0.3);
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: auto;
+}
+
+.fallback-text-inner {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fallback-text {
+    padding: 1.25rem 2rem;
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fallback-text {
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+  }
+}
