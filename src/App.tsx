@@ -105,8 +105,8 @@ const App: React.FC = () => {
           powerPreference: 'high-performance',
         }}
         camera={{
-          position: [0, 1.5, 5],
-          fov: 60,
+          position: [0, 2, 15],
+          fov: 45,
           near: 0.1,
           far: 1000,
         }}
@@ -114,7 +114,7 @@ const App: React.FC = () => {
           console.log('WebGL context created:', gl);
           console.log('Scene:', scene);
           console.log('Camera:', camera);
-          camera.lookAt(0, -0.5, 0);
+          camera.lookAt(0, 1.5, 0);
         }}
       >
         {/* <color attach="background" args={['#f8f0ff']} /> - Removed to show CSS gradient */}

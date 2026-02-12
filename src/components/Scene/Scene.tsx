@@ -134,11 +134,11 @@ const SceneContent: React.FC = () => {
         </mesh>
 
         {/* Main couple - even larger and more visible */}
-        <Couple3D position={[0, -2.5, 0]} scale={2.5} />
+        <Couple3D position={[0, -2.5, 0]} scale={2.0} />
 
 
         {/* Floating message - centered above the couple */}
-        <group ref={messageRef as any} position={[0, 4.5, 1]}>
+        <group ref={messageRef as any} position={[0, 3.5, 1]}>
           <Float speed={1} rotationIntensity={0.5} floatIntensity={0.5}>
             <group>
               <Text
