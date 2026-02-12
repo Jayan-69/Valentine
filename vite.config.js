@@ -6,58 +6,22 @@ import { dirname, resolve } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// https://vite.dev/config/
+// Very simple config to avoid manualChunks/external conflicts
 export default defineConfig({
-  plugins: [
-    react({
-      // Disable service worker in development
-      registerServiceWorker: false,
-    })
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      '~': resolve(__dirname, './')
-    },
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
-  },
-  server: {
-    host: true,
-    port: 3000,
-    open: true,
-    fs: {
-      strict: false
-    }
-  },
-  worker: {
-    format: 'es',
-    plugins: () => []
-  },
-  optimizeDeps: {
-    include: ['three', 'three-mesh-bvh'],
-    esbuildOptions: {
-      target: 'es2020',
-      supported: {
-        bigint: true,
-        'top-level-await': true
-      }
     }
   },
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: true,
-    minify: 'terser',
-    target: 'esnext',
+    chunkSizeWarningLimit: 2000,
+    reportCompressedSize: false,
+    // Avoid manualChunks completely to stop the Rollup error
     rollupOptions: {
       output: {
-        // Letting Vite handle chunks automatically to avoid external/manualChunk conflicts
-      }
-    },
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
+        manualChunks: undefined
       }
     }
   }
