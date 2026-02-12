@@ -19,7 +19,6 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
       '~': resolve(__dirname, './')
     },
-    dedupe: ['three'],
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
   },
   server: {
@@ -52,11 +51,7 @@ export default defineConfig({
     target: 'esnext',
     rollupOptions: {
       output: {
-        manualChunks: {
-          three: ['three'],
-          'react-three': ['@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
-          vendor: ['react', 'react-dom', 'framer-motion', 'gsap']
-        }
+        // Letting Vite handle chunks automatically to avoid external/manualChunk conflicts
       }
     },
     terserOptions: {
