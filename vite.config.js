@@ -38,7 +38,7 @@ export default defineConfig({
     include: ['three', 'three-mesh-bvh'],
     esbuildOptions: {
       target: 'es2020',
-      supported: { 
+      supported: {
         bigint: true,
         'top-level-await': true
       }
@@ -51,14 +51,11 @@ export default defineConfig({
     minify: 'terser',
     target: 'esnext',
     rollupOptions: {
-      external: ['three'],
       output: {
         manualChunks: {
-          three: ['three', '@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
+          three: ['three'],
+          'react-three': ['@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
           vendor: ['react', 'react-dom', 'framer-motion', 'gsap']
-        },
-        globals: {
-          three: 'THREE'
         }
       }
     },
